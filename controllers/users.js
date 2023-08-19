@@ -28,7 +28,7 @@ const login = (req, res, next) => {
           maxAge: 604800000,
           httpOnly: true,
         });
-        return res.status(200).send(token);
+        return res.status(200).send({ user });
       });
     })
     .catch((err) => next(err));
