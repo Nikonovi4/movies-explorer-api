@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
@@ -8,12 +9,11 @@ const helmet = require('helmet');
 const errorHandler = require('./middlewares/error-handler');
 require('dotenv').config();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('cors');
 
 const app = express();
 const routes = require('./routes/index');
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
