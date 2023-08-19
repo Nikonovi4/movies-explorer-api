@@ -1,19 +1,19 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const rateLimit = require('express-rate-limit');
-const { errors } = require('celebrate');
-const helmet = require('helmet');
-const errorHandler = require('./middlewares/error-handler');
-require('dotenv').config();
-const { requestLogger, errorLogger } = require('./middlewares/logger');
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const rateLimit = require("express-rate-limit");
+const { errors } = require("celebrate");
+const helmet = require("helmet");
+const errorHandler = require("./middlewares/error-handler");
+require("dotenv").config();
+const { requestLogger, errorLogger } = require("./middlewares/logger");
 
 const app = express();
-const routes = require('./routes/index');
+const routes = require("./routes/index");
 
-app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -26,14 +26,14 @@ app.use(helmet());
 app.use(limiter);
 app.use(requestLogger);
 
-const { PORT = '3000', DB_URL = 'mongodb://0.0.0.0/bitfilmsdb' } = process.env;
+const { PORT = "4000", DB_URL = "mongodb://0.0.0.0/bitfilmsdb" } = process.env;
 
 mongoose
   .connect(DB_URL, {
     useNewUrlParser: true,
   })
   .then(() => {
-    console.log('connected to bd');
+    console.log("connected to bd");
   });
 
 app.use(cookieParser());
