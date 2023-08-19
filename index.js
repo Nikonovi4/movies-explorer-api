@@ -8,9 +8,12 @@ const helmet = require('helmet');
 const errorHandler = require('./middlewares/error-handler');
 require('dotenv').config();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('cors');
 
 const app = express();
 const routes = require('./routes/index');
+
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
