@@ -27,6 +27,7 @@ const login = (req, res, next) => {
         res.cookie('jwt', token, {
           maxAge: 604800000,
           httpOnly: true,
+          sameSite: 'none',
         });
         return res.status(200).send({ user });
       });
