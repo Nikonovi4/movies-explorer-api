@@ -28,6 +28,7 @@ const login = (req, res, next) => {
           maxAge: 604800000,
           httpOnly: true,
           sameSite: 'none',
+          secure: true,
         });
         return res.status(200).send({ user });
       });
