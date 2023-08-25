@@ -23,7 +23,6 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   image: {
-    type: String,
     required: true,
     validate: {
       validator: (url) => /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/.test(url),
