@@ -25,10 +25,10 @@ const movieSchema = new mongoose.Schema({
   image: {
     type: Object,
     required: true,
-    validate: {
-      validator: (url) => /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/.test(url),
-      message: 'Не корректная ссылка',
-    },
+    // validate: {
+    //   validator: (url) => /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/.test(url),
+    //   message: 'Не корректная ссылка',
+    // },
   },
   trailerLink: {
     type: String,
