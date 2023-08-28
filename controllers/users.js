@@ -89,7 +89,7 @@ const updateUserById = (req, res, next) => {
       new: true,
       runValidators: true,
       upsert: false,
-    }
+    },
   )
     .then((user) => res.status(200).send(user))
     .catch((err) => {
@@ -111,7 +111,7 @@ const logout = (req, res, next) => {
   res
     .clearCookie("jwt", { sameSite: 'none', secure: true })
     .status(202)
-    .send("user is logout")
+    .send("Юзер покинул здание")
     .catch((err) => next(err));
 };
 
