@@ -109,8 +109,9 @@ const updateUserById = (req, res, next) => {
 
 const logout = (req, res, next) => {
   res
-    .clearCookie("jwt", { sameSite: 'none', secure: true })
+    .clearCookie('jwt', { sameSite: 'none', secure: true })
     .status(202)
+    .send()
     .catch((err) => next(err));
 };
 
