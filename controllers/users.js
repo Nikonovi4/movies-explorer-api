@@ -111,7 +111,7 @@ const logout = (req, res, next) => {
   res
     .clearCookie('jwt', { sameSite: 'none', secure: true })
     .status(202)
-    .send()
+    .send({})
     .catch((err) => next(err));
 };
 
