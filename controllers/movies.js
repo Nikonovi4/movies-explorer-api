@@ -39,9 +39,9 @@ const createMovie = (req, res, next) => {
       if (err.name === 'ValidationError') {
         return next(new ValidationError('Проверьте правилность заполнения'));
       }
-      if (err.code === 11000) {
-        return next(new ConflictError('Такой фильм уже добавлен'));
-      }
+      // if (err.code === 11000) {
+      //   return next(new ConflictError('Такой фильм уже добавлен'));
+      // }
       return next(err);
     });
 };
