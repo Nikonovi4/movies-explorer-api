@@ -39,9 +39,9 @@ const createMovie = (req, res, next) => {
       if (err.name === 'ValidationError') {
         return next(new ValidationError('Проверьте правилность заполнения'));
       }
-      // if (err.code === 11000) {
-      //   return next(new ConflictError('Такой фильм уже добавлен'));
-      // }
+      if (err.code === 11000) {
+        return next(new ConflictError('Такой фильм уже добавлен'));
+      }
       return next(err);
     });
 };
@@ -57,7 +57,18 @@ const getMovies = (req, res, next) => {
   })
     .catch((err) => next(err));
 };
+///
+const getAllmovies= (req, res, next) => {
 
+  Movie.find({}).then((movies) => {
+    if (movies === null) {
+      return next(new NotFoundError('Фильмы не найдены'));
+    }
+    return res.status(200).send(movies);
+  })
+    .catch((err) => next(err));
+};
+///
 const deleteMovie = (req, res, next) => {
   const { movieId } = req.params;
   const { _id } = req.user;
@@ -84,4 +95,5 @@ module.exports = {
   createMovie,
   getMovies,
   deleteMovie,
+  getAllmovies
 };
