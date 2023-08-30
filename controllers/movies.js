@@ -59,7 +59,6 @@ const getMovies = (req, res, next) => {
 };
 ///
 const getAllmovies= (req, res, next) => {
-
   Movie.find({}).then((movies) => {
     if (movies === null) {
       return next(new NotFoundError('Фильмы не найдены'));
@@ -68,6 +67,9 @@ const getAllmovies= (req, res, next) => {
   })
     .catch((err) => next(err));
 };
+
+
+
 ///
 const deleteMovie = (req, res, next) => {
   const { movieId } = req.params;
@@ -95,5 +97,5 @@ module.exports = {
   createMovie,
   getMovies,
   deleteMovie,
-  getAllmovies
+  getAllmovies,
 };
