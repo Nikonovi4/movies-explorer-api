@@ -13,7 +13,7 @@ const { requestLogger, errorLogger } = require("./middlewares/logger");
 const app = express();
 const routes = require("./routes/index");
 
-app.use(cors({ origin: "https://nikonovi4.nomoredomainsicu.ru", credentials: true }));
+app.use(cors({ origin: ["https://nikonovi4.nomoredomainsicu.ru", "http://localhost:3000"], credentials: true }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
