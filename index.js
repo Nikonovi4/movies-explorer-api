@@ -26,7 +26,7 @@ app.use(helmet());
 app.use(limiter);
 app.use(requestLogger);
 
-const { PORT = "4000", DB_URL = "mongodb://0.0.0.0/bitfilmsdb" } = process.env;
+const { PORT = 4000, DB_URL = "mongodb://0.0.0.0/bitfilmsdb" } = process.env;
 
 mongoose
   .connect(DB_URL, {
